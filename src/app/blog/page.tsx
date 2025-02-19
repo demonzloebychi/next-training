@@ -54,10 +54,6 @@ export default async function Uslugi() {
 
             <button className={styles.showMoreBtn}>Показать еще</button>
 
-            
-       
-
-           
         </Layout>
     )
 }
