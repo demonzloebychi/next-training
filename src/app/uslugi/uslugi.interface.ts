@@ -1,6 +1,6 @@
-// export type GetUslugiResponse = GetUslugiResponse[]
+export type GetServicesResponse = IService[]
 
-export interface GetUslugiResponse {
+export interface IService {
   id: number
   date: string
   date_gmt: string
@@ -120,7 +120,7 @@ export interface Links {
   self: Self[]
   collection: Collection[]
   about: About[]
-  up: Up[]
+  up?: Up[]
   "wp:attachment": WpAttachment[]
   "wp:term": WpTerm[]
   curies: Cury[]

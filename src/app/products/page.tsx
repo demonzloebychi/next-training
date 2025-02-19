@@ -29,10 +29,6 @@ export const metadata: object = {
     
 }
 
-
-
-
-
 // export async function generateMetadata({
 //   params,
 // }: {
@@ -42,8 +38,6 @@ export const metadata: object = {
 //   return { title: product.title}
   
 // }
-
-
 
 
 const fetchData = async () => {
@@ -73,18 +67,12 @@ export default async function Products() {
 
     // const pathname = usePathname()
 
-
     const data = await fetchData()
 
     if(!data) notFound()
-
-
         // let res = data.products?.map( item => {
         //     return <li key={item.id}>{item.brand}</li>;
         //  });
-
-    
-
     // const params = useParams<{slug:string}>()
 
     // params.slug
@@ -104,11 +92,6 @@ export default async function Products() {
                         <p className={styles.price}>{item.price} $</p>
                     </li>)}   
             </ul>
-
-            
-       
-
-           
         </Layout>
     )
 }

@@ -1,7 +1,7 @@
 import {notFound, redirect} from 'next/navigation'
 import styles from '@/app/products/Products.module.css'
 import Layout from '@/components/layout/Layout'
-import { GetUslugiResponse } from './uslugi.interface'
+import { GetServicesResponse } from './uslugi.interface'
 
 export const metadata: object = {
     title: 'Услуги',
@@ -14,8 +14,6 @@ export const metadata: object = {
 }
 
 
-
-
 const fetchData = async () => {
     const response = await fetch('https://clinical.vet//wp-json/wp/v2/uslugi/?per_page=100',{ 
         cache: 'force-cache',
@@ -24,26 +22,17 @@ const fetchData = async () => {
         }
     })
 
-
-
     const data = await response.json()
     console.log(data[0])
-    return data as GetUslugiResponse;
+    return data as GetServicesResponse;
 }
 
 
 
 export default async function Uslugi() {
-
-
-
     const data = await fetchData()
 
     if(!data) notFound()
-
-    
-
-
 
     return(
         <Layout>
@@ -57,11 +46,6 @@ export default async function Uslugi() {
                             </a> 
                     </li>)}   
             </ul>
-
-            
-       
-
-           
         </Layout>
     )
 }

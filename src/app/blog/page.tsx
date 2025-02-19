@@ -1,7 +1,7 @@
 import {notFound, redirect} from 'next/navigation'
 import styles from '@/app/products/Products.module.css'
 import Layout from '@/components/layout/Layout'
-import { Root } from './blog.interface'
+import { GetBlogsResponse } from './blog.interface'
 
 
 export const metadata: object = {
@@ -15,8 +15,6 @@ export const metadata: object = {
 }
 
 
-
-
 const fetchData = async () => {
     const response = await fetch('https://vethome24.ru/wp-json/wp/v2/blog/?per_page=12',{ 
         cache: 'force-cache',
@@ -25,24 +23,17 @@ const fetchData = async () => {
         }
     })
 
-
-
     const data = await response.json()
-    return data as Root;
+    return data as GetBlogsResponse
 }
 
 
 
 export default async function Uslugi() {
 
-
     const data = await fetchData()
 
     if(!data) notFound()
-
-    
-
-
 
     return(
         <Layout>
