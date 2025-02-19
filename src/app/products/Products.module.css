@@ -1,0 +1,45 @@
+.cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+
+}
+@media (max-width: 1024px) {
+    .cards{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .cards{
+        grid-template-columns: 1fr ;
+    }
+}
+
+
+
+.card{
+    background-color: antiquewhite;
+    padding: 15px;
+    border-radius: 20px;
+   
+}
+.brand{
+    font-size: 24px;
+    font-weight: 600;
+}
+.price{
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.showMoreBtn{
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #92eded;
+    font-size: 20px;
+    display: inline-block;
+    margin: 20px 0 60px 0;
+}
+
+
