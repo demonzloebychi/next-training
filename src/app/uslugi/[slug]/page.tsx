@@ -1,9 +1,6 @@
-// app/products/uslugi/[slug]/page.tsx
-
 import { notFound } from 'next/navigation';
 import Layout from '@/components/layout/Layout';
 import styles from '@/app/products/Products.module.css';
-import { GetUslugiResponse } from '../uslugi.interface'; // Импортируйте интерфейс, если он нужен
 
 const fetchServiceBySlug = async (slug: string) => {
     const response = await fetch(`https://clinical.vet/wp-json/wp/v2/uslugi?slug=${slug}`, {
@@ -22,8 +19,8 @@ const fetchServiceBySlug = async (slug: string) => {
     return data[0]; // Предполагаем, что API возвращает массив с одним элементом
 };
 
-export default async function ServicePage({ params }: { params: { slug: string } }) {
-    const { slug } = params;
+export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
     const service = await fetchServiceBySlug(slug);
 
     if (!service) {
@@ -32,11 +29,10 @@ export default async function ServicePage({ params }: { params: { slug: string }
 
     return (
         <Layout>
-            <h1 className={styles.title}>{service.title.rendered}</h1>
+            <h1 className='title'>{service.title.rendered}</h1>
             <a href="/uslugi">Назад</a>
             <div className={styles.content}>
-                {/* Здесь можно отобразить содержимое услуги */}
-                <div dangerouslySetInnerHTML={{ __html: service.content.rendered }} />
+
             </div>
         </Layout>
     );

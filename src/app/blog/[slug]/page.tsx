@@ -9,7 +9,7 @@ import styles from '@/components/layout/Layout.module.css';
 
 
 
-const fetchServiceBySlug = async (slug: string) => {
+const fetchBlogBySlug = async (slug: string) => {
     const response = await fetch(`https://vethome24.ru/wp-json/wp/v2/blog/?slug=${slug}`, {
         cache: 'force-cache',
         next: {
@@ -22,13 +22,12 @@ const fetchServiceBySlug = async (slug: string) => {
     }
 
     const data = await response.json();
-    console.log(data[0])
     return data[0]; // Предполагаем, что API возвращает массив с одним элементом
 };
 
-export default async function ServicePage({ params }: { params: { slug: string } }) {
-    const { slug } = params;
-    const service = await fetchServiceBySlug(slug);
+export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const service = await fetchBlogBySlug(slug);
 
     if (!service) {
         notFound(); // Если услуга не найдена, показываем 404

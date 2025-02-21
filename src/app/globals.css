@@ -21,8 +21,11 @@ body {
 }
 
 
-h1{
+h1, 
+.title{
   font-size: 46px;
   font-weight: 600;
   line-height: 110%;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
