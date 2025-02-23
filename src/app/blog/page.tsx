@@ -2,11 +2,13 @@ import {notFound, redirect} from 'next/navigation'
 import styles from '@/app/products/Products.module.css'
 import Layout from '@/components/layout/Layout'
 import { GetBlogsResponse } from './blog.interface'
+import Image from 'next/image'
+
 
 
 export const metadata: object = {
-    title: 'Услуги',
-    description: 'call',
+    title: 'Блог',
+    description: 'Блог о заболеваниях на нашем сайте!',
     openGraph: {
         title: 'Products',
         description: 'call',
@@ -43,9 +45,16 @@ export default async function Uslugi() {
                 {data.map( item => 
                     <li key={item.id} className={styles.card}>
                         <a href={`/blog/${item.slug}`}>
-                            <img 
+                            {/* <img 
                                 src={item.yoast_head_json.og_image[0].url}
                                 alt={item.title.rendered} 
+                            /> */}
+                            <Image 
+                                className='image'
+                                src={item.yoast_head_json.og_image[0].url}
+                                alt={item.title.rendered} 
+                                width={320}
+                                height={140}
                             />
                             {item.title.rendered}
                         </a> 

@@ -29,15 +29,6 @@ export const metadata: object = {
     
 }
 
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: { slug }
-// }): Promise<Metadata> {
-//   const product = await getData(slug)
-//   return { title: product.title}
-  
-// }
 
 
 const fetchData = async () => {
