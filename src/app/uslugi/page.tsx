@@ -14,6 +14,22 @@ export const metadata: object = {
 
 
 
+// const fetchData = async () => {
+//     const response = await fetch('https://vethome24.ru/wp-json/wp/v2/blog/?parent=0',{ 
+//         cache: 'force-cache',
+//         next: {
+//             revalidate: 3600,
+//         }
+//     })
+
+//     const data = await response.json()
+//     return data as GetServicesResponse;
+// }
+
+
+
+
+
 const fetchData = async () => {
 
     
@@ -68,13 +84,7 @@ const fetchData = async () => {
         // if (!response.ok) {
         //     throw new Error(`HTTP error! status: ${response.status}`);
         // }
-        // if (!response.ok) {
-        //     console.error(`HTTP error! status: ${response.status}`);
-        //     // Здесь можно вернуть пустой массив или специальное значение, чтобы обработать ошибку на уровне рендеринга
-        //     return [];
-        // }
 
-     
         
 
         const data: GetServicesResponse = await response.json();
@@ -102,16 +112,16 @@ const fetchData = async () => {
 
 
 
-    // const response = await fetch('https://clinical.vet/wp-json/wp/v2/uslugi/?per_page=100',{ 
-    //     cache: 'force-cache',
-    //     next: {
-    //         revalidate: 3600,
-    //     }
-    // })
+    const response = await fetch('https://clinical.vet/wp-json/wp/v2/uslugi/?per_page=100',{ 
+        cache: 'force-cache',
+        next: {
+            revalidate: 3600,
+        }
+    })
 
-    // const data = await response.json()
-    // // console.log(data)
-    // return data as GetServicesResponse;
+    const data = await response.json()
+    // console.log(data)
+    return data as GetServicesResponse;
 }
 
 

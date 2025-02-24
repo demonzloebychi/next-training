@@ -18,120 +18,46 @@ const fetchServiceBySlug = async (slug: string) => {
     const data = await response.json();
     const id = data[0].id
 
+    fetchChildren(id)
 
-    // const responseChildren = await fetch(`https://clinical.vet/wp-json/wp/v2/uslugi?parent=${id}`, {
-    //     cache: 'force-cache',
-    //     next: {
-    //         revalidate: 3600,
-    //     }
-    // });
+    // console.log(id)
+    return data[0]; // Предполагаем, что API возвращает массив с одним элементом
+    
+};
+
+
+const fetchChildren = async(id: number) => {
+    
+    const responseChildren = await fetch(`https://clinical.vet/wp-json/wp/v2/uslugi?parent=${id}`, {
+        cache: 'force-cache',
+        next: {
+            revalidate: 3600,
+        }
+    });
 
     // if (!response.ok) {
     //     return null; // Обработка ошибок
     // }
 
-    // const dataChildren = await responseChildren.json();
+    const dataChildren = await responseChildren.json();
     // console.log(dataChildren)
 
-    // return dataChildren;
-    // console.log(id)
-    return data[0]; // Предполагаем, что API возвращает массив с одним элементом
-   
+    return dataChildren as GetServicesResponse;
+}
 
 
 
 
 
 
-    
-};
-
-
-// const fetchChildren = async (parent: number) => {
-//     const response = await fetch(`https://clinical.vet/wp-json/wp/v2/uslugi?parent=${parent}`, {
-//         cache: 'force-cache',
-//         next: {
-//             revalidate: 3600,
-//         }
-//     });
-
-//     if (!response.ok) {
-//         return null; // Обработка ошибок
-//     }
-
-//     const data = await response.json();
-//     console.log(data)
-//     return data; // Предполагаем, что API возвращает массив с одним элементом
-// };
-
-
-
-
-
-// const fetchData = async () => {
-
-    
-//     const SERVICES_URL = 'https://clinical.vet/wp-json/wp/v2/uslugi/';
-//     const PER_PAGE = 100;
-
-//     let allServices: GetServicesResponse = [];
-//     let page = 1;
-//     let hasMore = true;
-
-//     while (hasMore){
-//         const response = await fetch(`${SERVICES_URL}?per_page=${PER_PAGE}&page=${page}`,{ 
-//             cache: 'force-cache',
-//             next: {
-//                 revalidate: 3600,
-//             }
-//         });     
-        
-
-//         const data: GetServicesResponse = await response.json();
-
-
-
-
-//         if (!data || data.length === 0) {
-//             notFound(); // или отобразите сообщение об ошибке
-//         }
-
-//         if(data.length > 0) {
-//             allServices = allServices.concat(data);
-//             page ++;
-//         } else {
-//             hasMore = false;
-//         }
-
-
-//         // console.log(data)
-//     }
-
-//     return allServices;
-
-
-
-// }
-
-
-
-
-
-
-
-
-
-export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ServicePage({ params }: { params: Promise<{ slug: string, id: number }> }) {
     const { slug } = await params;
     const service = await fetchServiceBySlug(slug);
-    // const serviceChildren = await fetchServiceBySlug(slug);
-    // const data = await fetchChildren();
+    const serviceChildren = await fetchChildren(service.id);
 
 
-    // const showChildrenServices = serviceChildren.filter(item => item.parent === service.id);
 
-
-    console.log(service)
+    // console.log(service)
 
 
     if (!service) {
@@ -143,14 +69,14 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <h1 className='title'>{service.title.rendered}</h1>
             <a href="/uslugi">Назад</a>
 
-                {/* <ul className={styles.cards}>
-                    {childrenServices.map( item => 
+                <ul className={styles.cards}>
+                    {serviceChildren.map( item => 
                         <li key={item.id} className={styles.card}>
                             <a href={`/uslugi/${item.slug}`}>
                                 {item.title.rendered}
                                 </a> 
                         </li>)}   
-                </ul> */}
+                </ul>
 
                            
                 <div dangerouslySetInnerHTML={{ __html: service.acf.o_vrache }} />
@@ -160,13 +86,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 <div dangerouslySetInnerHTML={{ __html: service.acf.table }} />
 
                 <div dangerouslySetInnerHTML={{ __html: service.acf.tekst_uslugi }} />
-
-
-
-
-
-
-
 
 
             <div className={styles.content}>
