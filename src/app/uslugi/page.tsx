@@ -13,11 +13,12 @@ export const metadata: object = {
 }
 
 
-const SERVICES_URL = 'https://clinical.vet/wp-json/wp/v2/uslugi/';
-const PER_PAGE = 100;
-
 
 const fetchData = async () => {
+
+    
+    const SERVICES_URL = 'https://clinical.vet/wp-json/wp/v2/uslugi/';
+    const PER_PAGE = 100;
 
     // let allServices: GetServicesResponse = [];
     // let offset = 0;
@@ -67,9 +68,23 @@ const fetchData = async () => {
         // if (!response.ok) {
         //     throw new Error(`HTTP error! status: ${response.status}`);
         // }
+        // if (!response.ok) {
+        //     console.error(`HTTP error! status: ${response.status}`);
+        //     // Здесь можно вернуть пустой массив или специальное значение, чтобы обработать ошибку на уровне рендеринга
+        //     return [];
+        // }
+
+     
+        
 
         const data: GetServicesResponse = await response.json();
 
+        // console.log(data)
+
+
+        if (!data || data.length === 0) {
+            notFound(); // или отобразите сообщение об ошибке
+        }
 
         if(data.length > 0) {
             allServices = allServices.concat(data);

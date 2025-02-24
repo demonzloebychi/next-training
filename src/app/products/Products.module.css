@@ -19,10 +19,15 @@
 
 
 .card{
-    background-color: antiquewhite;
+
+
+}
+.card a {
     padding: 15px;
+    background: antiquewhite;
     border-radius: 20px;
-   
+    width: 100%;
+    display: inline-block;
 }
 .brand{
     font-size: 24px;

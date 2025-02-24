@@ -3,6 +3,7 @@ import styles from '@/app/products/Products.module.css'
 import Layout from '@/components/layout/Layout'
 import { GetBlogsResponse } from './blog.interface'
 import Image from 'next/image'
+import { lazy } from 'react'
 
 
 
@@ -17,8 +18,18 @@ export const metadata: object = {
 }
 
 
+
+
+
+
+
+
+
+
+
+
 const fetchData = async () => {
-    const response = await fetch('https://vethome24.ru/wp-json/wp/v2/blog/?per_page=12',{ 
+    const response = await fetch('https://vethome24.ru/wp-json/wp/v2/blog/?per_page=18',{ 
         cache: 'force-cache',
         next: {
             revalidate: 3600,
@@ -28,6 +39,13 @@ const fetchData = async () => {
     const data = await response.json()
     return data as GetBlogsResponse
 }
+
+
+
+
+
+
+
 
 
 
