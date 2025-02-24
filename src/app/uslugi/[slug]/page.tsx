@@ -1,7 +1,47 @@
 import { notFound } from 'next/navigation';
 import Layout from '@/components/layout/Layout';
-import styles from '@/app/products/Products.module.css';
 import { GetServicesResponse } from '../uslugi.interface';
+import styles from '@/components/layout/Layout.module.css';
+
+
+
+import type { Metadata, ResolvingMetadata } from 'next'
+
+
+
+type Props = {
+    params: Promise<{ slug: string }>
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+  }
+   
+  export async function generateMetadata(
+    { params, searchParams }: Props,
+    parent: ResolvingMetadata
+  ): Promise<Metadata> {
+    // read route params
+    const slug = (await params).slug
+   
+    // fetch data
+    const serviceItem = await fetch(`https://clinical.vet/wp-json/wp/v2/uslugi/?slug=${slug}`).then((res) => res.json())
+
+    console.log(serviceItem[0].yoast_head_json.title)
+
+   
+    // optionally access and extend (rather than replace) parent metadata
+    // const previousImages = (await parent).openGraph?.images || []
+   
+    return {
+      title: serviceItem[0].yoast_head_json.title,
+      description: serviceItem[0].yoast_head_json.description,
+    //   openGraph: {
+    //     images: ['/some-specific-page-image.jpg', ...previousImages],
+    //   },
+    }
+  }
+
+
+
+
 
 const fetchServiceBySlug = async (slug: string) => {
     const response = await fetch(`https://clinical.vet/wp-json/wp/v2/uslugi?slug=${slug}`, {
@@ -67,7 +107,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     return (
         <Layout>
             <h1 className='title'>{service.title.rendered}</h1>
-            <a href="/uslugi">Назад</a>
+            <a className='buttonBack' href="/uslugi">Назад</a>
 
                 <ul className={styles.cards}>
                     {serviceChildren.map( item => 
@@ -78,14 +118,21 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         </li>)}   
                 </ul>
 
+                <div className={styles.content}>
+
+                    <div dangerouslySetInnerHTML={{ __html: service.acf.o_vrache }} />
+
+                    <div dangerouslySetInnerHTML={{ __html: service.acf.spoiler }} />
+
+                    <div dangerouslySetInnerHTML={{ __html: service.acf.table }} />
+
+                    <div dangerouslySetInnerHTML={{ __html: service.acf.tekst_uslugi }} />
+
+
+                </div>
+
                            
-                <div dangerouslySetInnerHTML={{ __html: service.acf.o_vrache }} />
 
-                <div dangerouslySetInnerHTML={{ __html: service.acf.spoiler }} />
-
-                <div dangerouslySetInnerHTML={{ __html: service.acf.table }} />
-
-                <div dangerouslySetInnerHTML={{ __html: service.acf.tekst_uslugi }} />
 
 
             <div className={styles.content}>
