@@ -97,7 +97,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
 
 
-    // console.log(service)
+    console.log(service)
 
 
     if (!service) {
@@ -109,30 +109,54 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <h1 className='title'>{service.title.rendered}</h1>
             <a className='buttonBack' href="/uslugi">Назад</a>
 
-                <ul className={styles.cards}>
+                <ul className='cards'>
                     {serviceChildren.map( item => 
-                        <li key={item.id} className={styles.card}>
+                        <li key={item.id} className='card'>
                             <a href={`/uslugi/${item.slug}`}>
                                 {item.title.rendered}
                                 </a> 
                         </li>)}   
                 </ul>
 
-                <div className={styles.content}>
 
+                            {/* <img 
+                                className='image'
+                                src={service.yoast_head_json.og_image[0].url}
+                                alt={service.title.rendered} 
+                                width={320}
+                                height={140}
+                            /> */}
+
+
+
+                <div className="ss-banner__right">
                     <div dangerouslySetInnerHTML={{ __html: service.acf.o_vrache }} />
+                </div>
 
-                    <div dangerouslySetInnerHTML={{ __html: service.acf.spoiler }} />
 
-                    <div dangerouslySetInnerHTML={{ __html: service.acf.table }} />
 
+                <div className="price">
+                    <div className="price__list">
+                        <div dangerouslySetInnerHTML={{ __html: service.acf.table }} />
+                    </div>
+
+                </div>
+        
+                    
+
+
+
+
+                <div className={styles.content}>
                     <div dangerouslySetInnerHTML={{ __html: service.acf.tekst_uslugi }} />
-
-
                 </div>
 
                            
+                <div dangerouslySetInnerHTML={{ __html: service.acf.spoiler }} />
 
+
+
+                
 
 
             <div className={styles.content}>
