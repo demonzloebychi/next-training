@@ -40,22 +40,6 @@ type Props = {
    
  
 
- 
-// export default function Page({ params, searchParams }: Props) {}
-
-
-
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: { slug }
-// }): Promise<Metadata> {
-//   const product = await getData(slug)
-//   return { title: product.title}
-  
-// }
-
-
 
 const fetchBlogBySlug = async (slug: string) => {
     const response = await fetch(`https://vethome24.ru/wp-json/wp/v2/blog/?slug=${slug}`, {

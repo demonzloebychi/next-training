@@ -46,6 +46,7 @@ h1,
 
 .image{
   width: 100%;
+  aspect-ratio: 16 / 9;
 }
 
 
@@ -165,7 +166,7 @@ h1,
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 
 }
 @media (max-width: 1024px) {
@@ -243,4 +244,15 @@ h1,
   padding: 30px;
   height: fit-content;
 
+}
+
+
+
+.showMoreBtn{
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #92eded;
+  font-size: 20px;
+  display: inline-block;
+  margin: 20px 0 60px 0;
 }
