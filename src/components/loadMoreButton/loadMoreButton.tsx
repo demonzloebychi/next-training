@@ -37,7 +37,7 @@ const LoadMoreButton = ({ initialData }: { initialData: GetBlogsResponse }) => {
                                 width={320}
                                 height={140}
                             />
-                            {item.title.rendered}
+                            <p>{item.title.rendered}</p>
                         </a>
                     </li>
                 )}

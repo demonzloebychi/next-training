@@ -5,6 +5,18 @@ import { GetBlogsResponse } from './blog.interface';
 import Image from 'next/image';
 import LoadMoreButton from '@/components/loadMoreButton/loadMoreButton';
 
+
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import CardActionArea from '@mui/material/CardActionArea';
+import CardActions from '@mui/material/CardActions';
+
+
+
+
 export const metadata: object = {
     title: 'Блог',
     description: 'Блог про животных на нашем сайте!',
@@ -30,7 +42,8 @@ export default async function Uslugi() {
 
     return (
         <Layout>
-            <h1 className={styles.title}>Блог</h1>
+            <h1 className='title'>Блог</h1>
+
 
             <ul className={styles.cards}>
                 {initialData.map(item =>
@@ -43,11 +56,12 @@ export default async function Uslugi() {
                                 width={320}
                                 height={140}
                             />
-                            {item.title.rendered}
+                            <p>{item.title.rendered}</p>
                         </a>
                     </li>
                 )}
             </ul>
+     
 
             <LoadMoreButton initialData={initialData} />
         </Layout>

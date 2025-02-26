@@ -24,10 +24,15 @@
 }
 .card a {
     padding: 15px;
-    background: antiquewhite;
-    border-radius: 20px;
+    /* background: antiquewhite;
+    border-radius: 20px; */
     width: 100%;
     display: inline-block;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, .1);
+    height: 100%;
+}
+.card a p{
+    padding-top: 10px;
 }
 .brand{
     font-size: 24px;

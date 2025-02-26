@@ -137,9 +137,9 @@ export default async function Uslugi() {
         <Layout>
             <h1 className={styles.title}>Услуги</h1>
 
-            <ul className={styles.cards}>
+            <ul className='cards'>
                 {topLevelServices.map( item => 
-                    <li key={item.id} className={styles.card}>
+                    <li key={item.id} className='card'>
                         <a href={`/uslugi/${item.slug}`}>
                             {item.title.rendered}
                             </a> 

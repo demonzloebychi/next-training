@@ -14,8 +14,17 @@ const nextConfig: NextConfig = {
         pathname: '/**',
         search: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'clinical.vet',
+        port: '',
+        pathname: '/**',
+        search: '',
+      },
     ],
   },
+
+
 
 
 };
