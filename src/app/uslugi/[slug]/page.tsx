@@ -4,11 +4,10 @@ import { GetServicesResponse } from '../uslugi.interface';
 import styles from '@/components/layout/Layout.module.css';
 import Image from 'next/image';
 import type { Metadata, ResolvingMetadata } from 'next'
+import AccordionBlock from '@/components/accordion/AccordionBlock'
 
 
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
+
 
 
 
@@ -116,6 +115,10 @@ const fetchChildren = async(id: number) => {
 
 
 
+
+
+
+
 export default async function ServicePage({ params }: { params: Promise<{ slug: string, id: number, photoUrl: number }> }) {
     const { slug } = await params;
     const service = await fetchServiceBySlug(slug);
@@ -126,7 +129,43 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
 
 
-    // console.log(service)
+    function parseHtmlRegex(htmlString: string): { title: string; text: string }[] {
+        const regexTitle = /<div class="spoiler__title">(.*?)<\/div>/g;
+        const regexText = /<div class="spoiler__text">(.*?)<\/div>/g;
+        
+        const titles: string[] = [];
+        let match;
+        
+        while ((match = regexTitle.exec(htmlString)) !== null) {
+            titles.push(match[1]);
+        }
+        
+        const texts: string[] = [];
+        while ((match = regexText.exec(htmlString)) !== null) {
+            texts.push(match[1]);
+        }
+        
+        return titles.map((title, index) => ({ title, text: texts[index] }));
+    }
+
+    
+    const htmlContent = service.acf.spoiler
+    const parsedData = parseHtmlRegex(htmlContent);
+    // console.log(parsedData);
+
+
+        
+    // Пример использования
+    // const htmlContent = `
+    // <div class="spoiler-item">
+    // <div class="spoiler__title">Заголовок 1</div>
+    // <div class="spoiler__text">Текст 1</div>
+    // </div>
+    // <div class="spoiler-item">
+    // <div class="spoiler__title">Заголовок 2</div>
+    // <div class="spoiler__text">Текст 2</div>
+    // </div>
+    // `;
 
 
     if (!service) {
@@ -196,10 +235,45 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </div>
 
                            
-                <div className='spoiler' dangerouslySetInnerHTML={{ __html: service.acf.spoiler }} />
+                {/* <div className='spoiler' dangerouslySetInnerHTML={{ __html: service.acf.spoiler }} /> */}
+
+                <div className="spoilers">
+                    {
+                        parsedData.map( item => 
+                            <AccordionBlock key={item.title} title={item.title} text={item.text}  />
+                        )
+                    }
+
+                </div>
 
 
-                {/* <div dangerouslySetInnerHTML={htmlMarkup} /> */}
+
+                {/* <div className="spoilers">
+                    {
+                        parsedData.map( item => 
+                            <Accordion key={item.title} slotProps={{ heading: { component: 'h4' } }}>
+                            <AccordionSummary
+        
+                                aria-controls="panel1-content"
+                                id="panel1-header"
+                            >
+                                {item.title}
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                {item.text}
+                            </AccordionDetails>
+                            </Accordion>
+                        )
+                    }
+
+                </div>
+                 */}
+              
+
+              
+
+               
+
                 
 
 
@@ -212,124 +286,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
 
 
-// interface PhotoData {
-//     /**
-//      * The alternative text for the image.
-//      */
-//     alt_text: string;
-//     /**
-//      * The ID of the attachment.
-//      */
-//     id: number;
-//     /**
-//      * The media type of the attachment.
-//      */
-//     media_type: string;
-//     /**
-//      * Details about the media file, such as its height, width, and available sizes.
-//      */
-//     media_details: {
-//       width: number;
-//       height: number;
-//       file: string;
-//       filesize: number;
-//       mime_type: string;
-//       /**
-//        * Available image sizes and their details.
-//        */
-//       sizes: {
-//         thumbnail?: {
-//           file: string;
-//           width: number;
-//           height: number;
-//           mime_type: string;
-//           source_url: string;
-//         };
-//         medium?: {
-//           file: string;
-//           width: number;
-//           height: number;
-//           mime_type: string;
-//           source_url: string;
-//         };
-//         medium_large?: {
-//           file: string;
-//           width: number;
-//           height: number;
-//           mime_type: string;
-//           source_url: string;
-//         };
-//         large?: {
-//           file: string;
-//           width: number;
-//           height: number;
-//           mime_type: string;
-//           source_url: string;
-//         };
-//         full: {
-//           file: string;
-//           width: number;
-//           height: number;
-//           mime_type: string;
-//           source_url: string;
-//         };
-//       };
-//     };
-//     /**
-//      * The MIME type of the attachment.
-//      */
-//     mime_type: string;
-//     /**
-//      * The URL of the attachment's source file.
-//      */
-//     source_url: string;
-//   }
-  
 
 
-
-// function parseHtmlRegex(htmlString: string): { title: string; text: string }[] {
-//     const regexTitle = /<div class="spoiler__title">(.*?)<\/div>/g;
-//     const regexText = /<div class="spoiler__text">(.*?)<\/div>/g;
-    
-//     const titles: string[] = [];
-//     let match;
-    
-//     while ((match = regexTitle.exec(htmlString)) !== null) {
-//         titles.push(match[1]);
-//     }
-    
-//     const texts: string[] = [];
-//     while ((match = regexText.exec(htmlString)) !== null) {
-//         texts.push(match[1]);
-//     }
-    
-//     return titles.map((title, index) => ({ title, text: texts[index] }));
-// }
-
-
-// const parsedData = parseHtmlRegex(htmlContent);
-// console.log(parsedData);
-
-
-
-
-
-
-// const externalMessage: string;
-// Пример использования
-// const htmlContent = `
-// <div class="spoiler-item">
-// <div class="spoiler__title">Заголовок 1</div>
-// <div class="spoiler__text">Текст 1</div>
-// </div>
-// <div class="spoiler-item">
-// <div class="spoiler__title">Заголовок 2</div>
-// <div class="spoiler__text">Текст 2</div>
-// </div>
-// `;
-
-// const htmlContent = data[0].acf.spoiler
 
 
 
