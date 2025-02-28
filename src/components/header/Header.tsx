@@ -24,6 +24,10 @@ const Header = () => {
                 name: 'Блог',
                 url: '/blog'
             },
+            {
+                name: 'Город',
+                url: '/city'
+            },
         ]
 
 

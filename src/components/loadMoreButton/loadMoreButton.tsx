@@ -11,9 +11,12 @@ const LoadMoreButton = ({ initialData }: { initialData: GetBlogsResponse }) => {
     const [data, setData] = useState<GetBlogsResponse>(initialData);
     const [pageNumber, setPageNumber] = useState(2);
     const [hasMorePosts, setHasMorePosts] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleLoadMore = async () => {
+        setIsLoading(true)
         const moreData = await fetchData(pageNumber);
+        setIsLoading(false)
         if (moreData.length) {
             setData([...data, ...moreData]);
             setPageNumber(pageNumber + 1);
@@ -45,7 +48,7 @@ const LoadMoreButton = ({ initialData }: { initialData: GetBlogsResponse }) => {
 
             {hasMorePosts && (
                 <button className='showMoreBtn' onClick={handleLoadMore}>
-                    Загрузить еще
+                    {isLoading ? 'Загрузка...' : 'Загрузить еще'}
                 </button>
             )}
         </>

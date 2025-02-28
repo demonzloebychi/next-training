@@ -184,20 +184,32 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     
 
                     <div className="ss-banner__img">
-                        <Image
-                            className='image'
-                            src={photoService}
-                            alt={service.title.rendered}
-                            width={320}
-                            height={140}
-                        />
+                        {
+                            photoService && (
+                                <Image
+                                    className='image'
+                                    src={photoService}
+                                    alt={service.title.rendered}
+                                    width={320}
+                                    height={140}
+                                />
+                            )
+                        }
+
                     </div>
                 </div>
 
                 <div className="ss-banner__right">
+                        {
+                            service.acf.o_vrache && (
+                                <div dangerouslySetInnerHTML={{ __html: service.acf.o_vrache }} />
+                            )
+                        }
                     
 
-                    <div dangerouslySetInnerHTML={{ __html: service.acf.o_vrache }} />
+                    
+
+
                 </div>
 
              </div>

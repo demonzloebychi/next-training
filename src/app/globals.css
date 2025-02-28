@@ -216,6 +216,10 @@ h1,
       td{
           padding-block: clamp(17px, 2vw, 30px);
           padding-inline: 25px;
+          font-size: clamp(16px, 2vw, 26px);
+      }
+      td:nth-child(2){
+        white-space: nowrap;
       }
 
       tr:nth-child(1){
@@ -299,13 +303,19 @@ h1,
 
 
 .ss-banner {
-  display: grid
-;
+  display: grid;
   grid-template-columns: 45% 55%;
   gap: 30px;
   /* margin-top: 150px; */
   margin-top: 40px;
   margin-bottom: 30px;
+}
+
+@media (max-width:768px) {
+  
+  .ss-banner {
+    grid-template-columns: 1fr;
+  }
 }
 
 
@@ -328,4 +338,27 @@ h1,
 
 .spoilers{
   margin-block: 60px;
+}
+
+
+
+.card a {
+  padding: 15px;
+  /* background: antiquewhite;
+  border-radius: 20px; */
+  width: 100%;
+  display: inline-block;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, .1);
+  height: 100%;
+}
+.card a p{
+  padding-top: 10px;
+}
+.brand{
+  font-size: 24px;
+  font-weight: 600;
+}
+.price{
+  font-size: 32px;
+  font-weight: 600;
 }

@@ -6,16 +6,6 @@ import Image from 'next/image';
 import LoadMoreButton from '@/components/loadMoreButton/loadMoreButton';
 
 
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardActions from '@mui/material/CardActions';
-
-
-
 
 export const metadata: object = {
     title: 'Блог',
@@ -32,6 +22,8 @@ const fetchData = async (pageNumber: number) => {
     })
 
     const data = await response.json()
+    // console.log(data)
+
     return data as GetBlogsResponse
 }
 

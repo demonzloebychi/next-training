@@ -10,3 +10,18 @@ export function middleware(request: NextRequest) {
 export const config = {
     matcher: ['/about/:path*', 'dashboard/:path*'],
 }
+
+
+// app/middleware.ts
+import { URL } from 'url';
+
+export async function GET(request: Request) {
+  const url = new URL(request.url);
+  const pathname = url.pathname;
+
+  if (pathname === '/') {
+    return NextResponse.redirect('/moscow', 301);
+  }
+
+  return NextResponse.next();
+}

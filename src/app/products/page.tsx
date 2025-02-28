@@ -2,9 +2,9 @@
 // import { useParams, usePathname, useRouter } from "next/navigation"
 // import type { Metadata } from "next"
 import {notFound, redirect} from 'next/navigation'
-import styles from '@/app/products/Products.module.css'
 import { GetProductsResponse } from './products.interface'
 import Layout from '@/components/layout/Layout'
+
 // import axios from 'axios';
 // import { useQuery } from '@tanstack/react-query'
 
@@ -73,14 +73,14 @@ export default async function Products() {
         <Layout>
             <h1 className='title'>Продукты</h1>
 
-            <ul className={styles.cards}>
+            <ul className='cards'>
                 {/* {res} */}
                 {data.products?.map( item => 
-                    <li key={item.id} className={styles.card}>
-                        <p className={styles.brand}>{item.brand}</p> 
+                    <li key={item.id} className='card'>
+                        <p className='brand'>{item.brand}</p> 
                         <p>{item.category}</p> 
                         <p>{item.description}</p>
-                        <p className={styles.price}>{item.price} $</p>
+                        <p className='price'>{item.price} $</p>
                     </li>)}   
             </ul>
         </Layout>
