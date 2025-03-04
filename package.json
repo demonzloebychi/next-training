@@ -13,9 +13,12 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.4.6",
     "@mui/material": "^6.4.6",
+    "@sendgrid/mail": "^8.1.4",
     "@tanstack/react-query": "^5.66.7",
+    "@types/nodemailer": "^6.4.17",
     "axios": "^1.7.9",
     "next": "15.1.7",
+    "nodemailer": "^6.10.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

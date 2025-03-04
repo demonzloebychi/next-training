@@ -362,3 +362,24 @@ h1,
   font-size: 32px;
   font-weight: 600;
 }
+
+
+
+
+.input {
+  border: 1px solid var(--foreground);
+  border-radius: 10px;
+  padding: 10px;
+  padding-left: 5px;
+  width: 100%;
+
+}
+
+
+.button {
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: var(--contrast-color);
+  color: var(--background);
+}

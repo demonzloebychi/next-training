@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from 'next/image';
 import { GetBlogsResponse } from "@/app/blog/blog.interface";
 import styles from '@/app/products/Products.module.css';
-import { fetchData } from '@/api/api'
+import { fetchData } from '@/app/api/api'
 
 // Клиентский компонент для кнопки "Загрузить еще"
 const LoadMoreButton = ({ initialData }: { initialData: GetBlogsResponse }) => {
