@@ -1,0 +1,9 @@
+.sendMessage{
+    padding: 10px 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 20px;
+}
+
+

@@ -16,6 +16,11 @@ const CallBackForm = () => {
   // Функция для обработки ввода с маской
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let input = e.target.value.replace(/\D/g, ''); // Убираем все нецифровые символы
+
+ 
+  
+    
+
     if (input.length > 11) input = input.slice(0, 11); // Ограничиваем длину номера
 
     let formattedPhone = '+7 ';
