@@ -57,11 +57,11 @@ h1,
 
 
 .header{
-  /* position: fixed; */
+  position: relative;
   height: 80px;
   margin-bottom: 20px;
   width: 100%;
-  display: flex;
+  display: block;
   justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
@@ -73,6 +73,7 @@ h1,
   justify-content: center;
   gap: 20px;
   margin: 20px 0;
+
 }
 .link{
   padding: 20px;
@@ -140,6 +141,7 @@ h1,
       display: block;
       right: 0;
       transform: translateX(0%);
+      z-index: 51;
   }
 
 
@@ -408,7 +410,11 @@ h1,
   transition: all .3s ease-in-out;
   >form{
       box-shadow: none;
-  
+      
+  }
+  >h2{
+    display: block;
+    margin-top: 30px;
   }
 }
 
@@ -417,15 +423,21 @@ h1,
   transition: all .3s ease-in-out;
 
 }
+
 .popup-overlay{
-  display: none;
+  top: -100%;
+
 }
 .popup-overlay.active{
-  display: block;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 49;
+}
+
+.close-popup{
+    position: absolute;
+    right: 15px;
 }
