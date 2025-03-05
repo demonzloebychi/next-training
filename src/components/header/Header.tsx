@@ -2,6 +2,12 @@
 import { useState } from 'react';
 import styles from '@/components/header/Header.module.css'
 import CallBackForm from '../CallBackForm/CallBackForm';
+// import ThemeToggle from '@/components/ToggleTheme/ToggleTheme';
+// import dynamic from 'next/dynamic';
+
+// const ThemeToggle = dynamic(() => import('@/components/ToggleTheme/ToggleTheme'), {
+//   ssr: false,
+// });
 
 const Header = () => {
 
@@ -25,7 +31,8 @@ const Header = () => {
             },
             {
                 name: 'Блог',
-                url: '/blog'
+                url: '/blog',
+
             },
             {
                 name: 'Город',
@@ -103,6 +110,8 @@ const Header = () => {
                 >
                     Отправить заявку
                 </button>
+
+                {/* <ThemeToggle /> */}
 
 
             </header>
