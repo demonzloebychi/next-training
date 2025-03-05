@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import styles from '@/components/header/Header.module.css'
 import CallBackForm from '../CallBackForm/CallBackForm';
+import zIndex from '@mui/material/styles/zIndex';
 // import ThemeToggle from '@/components/ToggleTheme/ToggleTheme';
 // import dynamic from 'next/dynamic';
 
@@ -49,10 +50,11 @@ const Header = () => {
     return (
         <>
             
-                <div 
+                {/* <div 
                     className={`popup-overlay ${isOpenPopup ? 'active' : ''}`}
-                    onClick={() => setIsOpenPopup(false)}
-                >
+                    // onClick={() => setIsOpenPopup(false)}
+                    onClick={() => console.log('clicked')}
+                > */}
                     <div className={`popup ${isOpenPopup ? 'active' : ''}`}>
                         <button 
                             className="close-popup"
@@ -80,7 +82,7 @@ const Header = () => {
                         <h2 className='title-h2'>Связаться с нами</h2>
                         <CallBackForm />
                     </div>
-                </div>
+                {/* </div> */}
 
             <header className="header">
                 <button onClick={() => setIsOpen(!isOpen)} className={`burgerButton ${isOpen ? 'active' : ''}`} id="burger-button">
