@@ -1,24 +1,32 @@
-// // components/ThemeToggle.tsx
-// import React, { useContext } from 'react';
-// import { ThemeContext } from '@/app/contexts/ThemeContext';
+"use client"
 
-// const ThemeToggle: React.FC = () => {
-//   const context = useContext(ThemeContext);
+import * as React from "react"
+import { useTheme } from "next-themes"
 
-//   if (!context) {
-//     throw new Error('ThemeToggle must be used within a ThemeProvider');
-//   }
 
-//   const { toggleTheme } = context;
 
-//   return (
-//     <button 
-//         onClick={toggleTheme}
-//         className='btn'
-//     >
-//         Переключить
-//     </button>
-//   );
-// };
+export function ModeToggle() {
+  const { setTheme } = useTheme()
 
-// export default ThemeToggle;
+  return (
+    <>
+      <div>
+        <button>
+
+          <span className="sr-only">Toggle theme</span>
+        </button>
+      </div>
+      <div className="flex gap-4">
+        <div onClick={() => setTheme("light")}>
+          Light
+        </div>
+        <div onClick={() => setTheme("dark")}>
+          Dark
+        </div>
+        {/* <div onClick={() => setTheme("system")}>
+          System
+        </div> */}
+      </div>
+    </>
+  )
+}

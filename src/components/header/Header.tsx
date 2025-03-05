@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styles from '@/components/header/Header.module.css'
 import CallBackForm from '../CallBackForm/CallBackForm';
 import zIndex from '@mui/material/styles/zIndex';
+import { ModeToggle } from '../ToggleTheme/ToggleTheme';
 // import ThemeToggle from '@/components/ToggleTheme/ToggleTheme';
 // import dynamic from 'next/dynamic';
 
@@ -114,6 +115,8 @@ const Header = () => {
                 </button>
 
                 {/* <ThemeToggle /> */}
+                <ModeToggle />
+                
 
 
             </header>

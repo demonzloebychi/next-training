@@ -7,7 +7,7 @@
   
 }
 
-body{
+html{
   --background: #ffffff;
   --foreground: #171717;
 
@@ -27,7 +27,7 @@ body{
   --light-2: #ededed;
 }
 
-body.dark-theme{
+html.dark{
   --background: #252525;
   --foreground: #ffffff;
   --shadow: rgba(255, 255, 255, 0.1);
