@@ -22,10 +22,11 @@
     box-shadow: 0 0 20px var(--shadow);
     padding: 10px;
     border-radius: 10px;
-    img{
-        margin-bottom: 10px;
-    }
+  
 
+}
+.card img{
+    margin-bottom: 10px;
 }
 
 .showMoreBtn{
