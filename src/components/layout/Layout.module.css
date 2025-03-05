@@ -14,7 +14,7 @@
 .buttonBack{
     padding: 20px;
     border-radius: 20px;
-    background-color: #92eded;
+    background-color: var(--contrast-color-light);
     font-size: 20px;
     display: inline-block;
     margin: 20px 0;
@@ -22,7 +22,7 @@
 .showMoreBtn{
     padding: 20px;
     border-radius: 20px;
-    background-color: #92eded;
+    background-color: var(--contrast-color-light);
     font-size: 20px;
     display: inline-block;
     margin: 20px 0;

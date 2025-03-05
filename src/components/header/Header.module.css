@@ -1,12 +1,12 @@
 .sendMessage{
     padding: 10px 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px var(--shadow);
     width: fit-content;
     height: fit-content;
     border-radius: 20px;
-    position: absolute;
+    /* position: absolute;
     right: 0;
-    top: 10px;
+    top: 10px; */
 }
 
 

@@ -9,12 +9,25 @@ type PropsType = {
 }
 
 const Layout: FC<PropsWithChildren<PropsType>> = ({ children }) => {
+
+    // const [isDark, setIsDark] = useState(false)
+
+
     return (
-        <div className={styles.container}>
-            <Header>
-            </Header>
-            {children}
-        </div>
+        <>
+            
+             
+            <div className={`container`}>
+                <Header />
+
+                <main className="main">
+                    {children}
+                </main>
+            
+            </div>
+        
+        </>
+
     );
 }
 
