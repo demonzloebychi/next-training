@@ -2,31 +2,54 @@
 
 import * as React from "react"
 import { useTheme } from "next-themes"
-
+import { useState } from "react"
 
 
 export function ModeToggle() {
   const { setTheme } = useTheme()
+  const [isOpen, setIsOpen] = useState(false)
+
+  function HandleToggleTheme(e: any) {
+    setIsOpen(!isOpen)
+    if(!isOpen){
+      setTimeout(()=>setIsOpen(false), 3000)
+    }
+  }
 
   return (
     <>
-      <div>
-        <button>
+      <div className="toggle-menu">
+        <button 
+          id="toggleButton"
+          // onClick={()=> setIsOpen(!isOpen)}
+          onClick={HandleToggleTheme}
+          className="toggle-button"
+        >
+          Switch theme
 
-          <span className="sr-only">Toggle theme</span>
+          
+
         </button>
+
+
+
+        <div 
+            className={`actions-menu ${isOpen ? 'active' : ''}`}
+          >
+            <button onClick={() => setTheme("light")}>
+              Light
+            </button>
+            <button 
+              onClick={() => setTheme("dark")}
+            >
+              Dark
+            </button>
+            {/* <div onClick={() => setTheme("system")}>
+              System
+            </div> */}
+          </div>
       </div>
-      <div className="flex gap-4">
-        <div onClick={() => setTheme("light")}>
-          Light
-        </div>
-        <div onClick={() => setTheme("dark")}>
-          Dark
-        </div>
-        {/* <div onClick={() => setTheme("system")}>
-          System
-        </div> */}
-      </div>
+     
     </>
   )
 }
