@@ -7,11 +7,6 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import AccordionBlock from '@/components/accordion/AccordionBlock'
 
 
-
-
-
-
-
 type Props = {
     params: Promise<{ slug: string }>
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>

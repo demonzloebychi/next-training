@@ -2,14 +2,8 @@
 import { useState } from 'react';
 import styles from '@/components/header/Header.module.css'
 import CallBackForm from '../CallBackForm/CallBackForm';
-import zIndex from '@mui/material/styles/zIndex';
 import { ModeToggle } from '../ToggleTheme/ToggleTheme';
-// import ThemeToggle from '@/components/ToggleTheme/ToggleTheme';
-// import dynamic from 'next/dynamic';
-
-// const ThemeToggle = dynamic(() => import('@/components/ToggleTheme/ToggleTheme'), {
-//   ssr: false,
-// });
+// import CitySelector from '../cityChange/cityChange';
 
 const Header = () => {
 
@@ -43,19 +37,8 @@ const Header = () => {
         ]
 
 
-   
-
-    
-
-
     return (
         <>
-            
-                {/* <div 
-                    className={`popup-overlay ${isOpenPopup ? 'active' : ''}`}
-                    // onClick={() => setIsOpenPopup(false)}
-                    onClick={() => console.log('clicked')}
-                > */}
                     <div className={`popup ${isOpenPopup ? 'active' : ''}`}>
                         <button 
                             className="close-popup"
@@ -83,7 +66,6 @@ const Header = () => {
                         <h2 className='title-h2'>Связаться с нами</h2>
                         <CallBackForm />
                     </div>
-                {/* </div> */}
 
             <header className="header">
                 <button onClick={() => setIsOpen(!isOpen)} className={`burgerButton ${isOpen ? 'active' : ''}`} id="burger-button">
@@ -114,8 +96,10 @@ const Header = () => {
                     Отправить заявку
                 </button>
 
-                {/* <ThemeToggle /> */}
+               
                 <ModeToggle />
+
+                {/* <CitySelector /> */}
                 
 
 
