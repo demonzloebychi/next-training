@@ -4,7 +4,9 @@ import Layout from '@/components/layout/Layout';
 import { GetBlogsResponse } from './blog.interface';
 import Image from 'next/image';
 import LoadMoreButton from '@/components/loadMoreButton/loadMoreButton';
-
+//для поиска и фильтра на клиенте
+// import SearchFilter from '@/components/search-filter/SearchFilter';
+import ServerSearchFilter from '@/components/server-search-filter/ServerSearchFilter';
 
 
 export const metadata: object = {
@@ -27,15 +29,38 @@ const fetchData = async (pageNumber: number) => {
     return data as GetBlogsResponse
 }
 
+//для поиска и фильтра на клиенте
+// interface BlogPostWithUrl {
+//     text: string;
+//     url: string;
+//   }
 export default async function Uslugi() {
     const initialData = await fetchData(1);
 
+    
     if (!initialData.length) notFound();
+
+
+
+
+//для поиска и фильтра на клиенте
+    // const paragraphData: BlogPostWithUrl[] = initialData.map(item => ({
+    //     text: item.title.rendered.replace(/<\/?[^>]+(>|$)/g, ''), // Очистка HTML-тегов
+    //     url: `/blog/${item.slug}`, // Формируем URL страницы
+    //   }))
+
+
 
     return (
         <Layout>
             <h1 className='title'>Блог</h1>
 
+            {//для поиска и фильтра на клиенте
+
+            
+            /* <SearchFilter paragraphs={paragraphData} /> */}
+       
+            <ServerSearchFilter />
 
             <ul className={styles.cards}>
                 {initialData.map(item =>

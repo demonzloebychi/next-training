@@ -546,3 +546,26 @@ h1,
   opacity: 1;
   top: 35px;
 }
+
+
+
+
+
+.filter{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: start;
+  margin-bottom: 30px;
+}
+
+.filter-response{
+  margin-bottom: 30px;
+  li{
+    padding: 5px 0;
+  }
+}
+
+
+
+
