@@ -59,19 +59,19 @@ export default async function Products() {
         <Layout>
             <h1 className='title'>Продукты</h1>
 
-            <Suspense fallback={<p>Загрузка фильтров...</p>}> {/* Оборачиваем CategoryFilters в Suspense */}
+            <Suspense fallback={<p>Загрузка фильтров...</p>}> 
                 <CategoryFilters serverProducts={data.products} />
             </Suspense>
             
 
             {/* <div className="chips">
-                {data.products?.map(item => 
+                {[...new Set(data.products?.map(item => 
                     <div key={item.id} className='chip'>
-                        <input type="checkbox" name="name" role='chip' id="" />
+                        <input className='checkbox-chip' type="checkbox" name="name" role='chip' id="" />
                         {item.category}
                     </div>
-                )}
-
+                ) )] }
+            
                
             </div> */}
 
@@ -92,6 +92,9 @@ export default async function Products() {
                         <p className='price'>{item.price} $</p>
                     </li>)}   
             </ul> */}
+
+
+
         </Layout>
     )
 }
