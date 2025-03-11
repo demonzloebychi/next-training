@@ -30,10 +30,7 @@ const Header = () => {
                 url: '/blog',
 
             },
-            {
-                name: 'Город',
-                url: '/city'
-            },
+           
         ]
 
 

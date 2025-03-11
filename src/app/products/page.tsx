@@ -4,20 +4,11 @@
 import {notFound, redirect} from 'next/navigation'
 import { GetProductsResponse } from './products.interface'
 import Layout from '@/components/layout/Layout'
+import CategoryFilters from '@/components/category-filter/CategoryFilter';
+import { Suspense } from 'react'; // Импортируем Suspense
 
 // import axios from 'axios';
 // import { useQuery } from '@tanstack/react-query'
-
-
-
-// export const metadata: Metadata = {
-//     title: 'Products',
-//     description: 'call',
-//     openGraph: {
-//         title: 'Products',
-//      description: 'call',
-//     }
-// }
 
 export const metadata: object = {
     title: 'Products',
@@ -38,11 +29,6 @@ const fetchData = async () => {
             revalidate: 3600,
         }
     })
-
-    //дал ии
-    // if (!response.ok) {
-    //     throw new Error('Failed to fetch data');
-    // }
 
     const data = await response.json()
     // console.log(data)
@@ -73,8 +59,31 @@ export default async function Products() {
         <Layout>
             <h1 className='title'>Продукты</h1>
 
+            <Suspense fallback={<p>Загрузка фильтров...</p>}> {/* Оборачиваем CategoryFilters в Suspense */}
+                <CategoryFilters serverProducts={data.products} />
+            </Suspense>
+            
+
+            {/* <div className="chips">
+                {data.products?.map(item => 
+                    <div key={item.id} className='chip'>
+                        <input type="checkbox" name="name" role='chip' id="" />
+                        {item.category}
+                    </div>
+                )}
+
+               
+            </div> */}
+
+            
+{/* 
             <ul className='cards'>
-                {/* {res} */}
+                {res}
+            </ul> */}
+
+
+
+            {/* <ul className='cards'>
                 {data.products?.map( item => 
                     <li key={item.id} className='card'>
                         <p className='brand'>{item.brand}</p> 
@@ -82,7 +91,7 @@ export default async function Products() {
                         <p>{item.description}</p>
                         <p className='price'>{item.price} $</p>
                     </li>)}   
-            </ul>
+            </ul> */}
         </Layout>
     )
 }
