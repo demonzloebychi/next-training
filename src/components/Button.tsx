@@ -7,11 +7,12 @@ type PropsType = {
     onClick?: any;
     className?: any;
     id?: string;
+    title?: string;
 }
 
-export const Button: FC<PropsWithChildren<PropsType>> = ({children, type, onClick, className, id }) => {
+export const Button: FC<PropsWithChildren<PropsType>> = ({children, type, onClick, className, id, title }) => {
     return (
-        <button type={type} onClick={onClick} className={className || 'btn'} id={id}>
+        <button type={type} onClick={onClick} className={className || 'btn'} id={id} title={title}>
             {children}
         </button>
     );
