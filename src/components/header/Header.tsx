@@ -69,6 +69,8 @@ const Header = () => {
           
 
             
+
+            
             <header className="header">
                 <button onClick={() => setIsOpen(!isOpen)} className={`burgerButton ${isOpen ? 'active' : ''}`} id="burger-button">
                     <span></span>
@@ -108,7 +110,7 @@ const Header = () => {
 
 
             </header>
-           
+          
 
             
         </>
