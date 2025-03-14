@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { GetBlogsResponse } from "@/app/blog/blog.interface";
 import styles from '@/app/products/Products.module.css';
 import { fetchData } from '@/app/api/api'
+import { Button } from "../Button";
 
 // Клиентский компонент для кнопки "Загрузить еще"
 const LoadMoreButton = ({ initialData }: { initialData: GetBlogsResponse }) => {
@@ -47,9 +48,13 @@ const LoadMoreButton = ({ initialData }: { initialData: GetBlogsResponse }) => {
             </ul>
 
             {hasMorePosts && (
-                <button className='showMoreBtn' onClick={handleLoadMore}>
-                    {isLoading ? 'Загрузка...' : 'Загрузить еще'}
-                </button>
+                // <button className='showMoreBtn' onClick={handleLoadMore}>
+                //     {isLoading ? 'Загрузка...' : 'Загрузить еще'}
+                // </button>
+
+                <Button onClick={handleLoadMore} className={'showMoreBtn'}>
+                {isLoading ? 'Загрузка...' : 'Загрузить еще'}
+                </Button>
             )}
         </>
     );

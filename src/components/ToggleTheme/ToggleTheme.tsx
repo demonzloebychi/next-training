@@ -3,6 +3,7 @@
 import * as React from "react"
 import { useTheme } from "next-themes"
 import { useState } from "react"
+import { Button } from "../Button"
 
 
 export function ModeToggle() {
@@ -22,7 +23,7 @@ export function ModeToggle() {
   return (
     <>
       <div className="toggle-menu">
-        <button 
+        {/* <button 
           id="toggleButton"
           // onClick={()=> setIsOpen(!isOpen)}
           onClick={HandleToggleTheme}
@@ -32,7 +33,16 @@ export function ModeToggle() {
 
           
 
-        </button>
+        </button> */}
+
+        <Button 
+          className={'toggle-button'}
+          id='toggleButton' 
+          onClick={HandleToggleTheme}
+          
+        >
+          Сменить тему
+        </Button>
 
 
 

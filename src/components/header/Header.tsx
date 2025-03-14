@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styles from '@/components/header/Header.module.css'
 import CallBackForm from '../CallBackForm/CallBackForm';
 import { ModeToggle } from '../ToggleTheme/ToggleTheme';
+import { Button } from '../Button';
 // import CitySelector from '../cityChange/cityChange';
 
 const Header = () => {
@@ -85,13 +86,13 @@ const Header = () => {
 
 
 
-                <button 
-                    className={styles.sendMessage}
+ 
+                <Button
                     onClick={() => setIsOpenPopup(!isOpenPopup)}
-                
+                    className={styles.sendMessage}
                 >
                     Отправить заявку
-                </button>
+                </Button>
 
                
                 <ModeToggle />

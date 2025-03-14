@@ -2,6 +2,7 @@
 // components/SearchFilter.tsx
 'use client'
 import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react'
+import { Button } from '../Button'
 
 interface BlogPost {
   id: number
@@ -39,10 +40,13 @@ const ServerSearchFilter = () => {
 
       const data: BlogPost[] = await response.json()
       setAllPosts(data)
+      
     } catch (error) {
       console.error('Error fetching posts:', error)
     }
   }
+
+
 
   useEffect(() => {
     fetchAllPosts() // Получаем все статьи при монтировании компонента
@@ -73,7 +77,7 @@ const ServerSearchFilter = () => {
           value={searchTerm}
           onChange={handleChange}
         />
-        <button className='btn' type="submit">Search</button>
+        <Button type='submit'>Search</Button>
       </form>
 
       <ul className='filter-response'>

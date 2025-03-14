@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import styles from '@/components/CallBackForm/CallBackForm.module.css';
+import { Button } from '../Button';
 
 interface FormData {
   name: string;
@@ -74,9 +75,12 @@ const CallBackForm = () => {
           onChange={handlePhoneChange}
           placeholder="+7 (___) ___-__-__"
         />
-        <button className='button submit-btn' type="submit">
+        <Button
+          className='button submit-btn' 
+          type="submit"
+        >
           Отправить
-        </button>
+        </Button>
         {success && <p>Форма отправлена успешно!</p>}
         {error && <p>Ошибка при отправке формы.</p>}
       </form>
