@@ -1,16 +1,34 @@
 'use client'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '@/components/header/Header.module.css'
 import CallBackForm from '../CallBackForm/CallBackForm';
 import { ModeToggle } from '../ToggleTheme/ToggleTheme';
 import { Button } from '../Button';
-// import CitySelector from '../cityChange/cityChange';
+
+import CitySelector from '../cityChange/cityChange';
+import { usePathname } from 'next/navigation';
+import cities from '@/utils/cities';
+
 
 const Header = () => {
 
     const [isOpen, setIsOpen] = useState(false);
 
     const [isOpenPopup, setIsOpenPopup] = useState(false)
+
+    const pathname = usePathname(); 
+    const [currentCity, setCurrentCity] = useState('moscow'); // defaultCity = 'moscow'
+
+
+    useEffect(() => {
+        const pathSegments = pathname?.split('/');
+        const cityFromUrl = pathSegments?.[1]; // Первый сегмент пути
+        if (cityFromUrl && cities[cityFromUrl]) {
+          setCurrentCity(cityFromUrl);
+        }
+      }, [pathname]); // Следим за изменением пути
+
+
 
 
     const MENU = [
@@ -63,6 +81,8 @@ const Header = () => {
                         </button>
                         <h2 className='title-h2'>Связаться с нами</h2>
                         <CallBackForm />
+
+                        
                     </div>
 
 
@@ -81,7 +101,7 @@ const Header = () => {
                     <ul className="menu">
                         {MENU.map(item => 
                                 <li key={item.url}>
-                                    <a href={item.url} className="link">
+                                    <a href={`/${currentCity}${item.url}`} className="link">
                                         {item.name}
                                     </a>
                                 </li>
@@ -105,7 +125,7 @@ const Header = () => {
                 <ModeToggle/>
               
 
-                {/* <CitySelector /> */}
+                <CitySelector />
                 
 
 
@@ -121,3 +141,11 @@ const Header = () => {
 }
 
 export default Header;
+
+
+
+
+
+
+    
+
