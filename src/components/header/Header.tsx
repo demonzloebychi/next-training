@@ -79,7 +79,7 @@ const Header = () => {
                                 </g>
                             </svg>
                         </button>
-                        <h2 className='title-h2'>Связаться с нами</h2>
+                        <h2 className='title-h2'>Связаться</h2>
                         <CallBackForm />
 
                         
