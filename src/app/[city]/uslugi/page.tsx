@@ -125,15 +125,23 @@ const fetchData = async () => {
 
 
 
-export default async function Uslugi() {
+export default async function Uslugi({
+    params,
+}: {params: Promise<{ city: string }>;
+
+}) {
+
+
+    const { city } = await params; 
+
+
+
     const data = await fetchData()
 
     const topLevelServices = data.filter(item => item.parent === 0);
 
     if(!data) notFound()
 
-
-    const currentUrl = 'uslugi'
 
     return(
         <Layout>
@@ -142,7 +150,7 @@ export default async function Uslugi() {
             <ul className='cards'>
                 {topLevelServices.map( item => 
                     <li key={item.id} className='card'>
-                        <a href={`/${currentUrl}/${item.slug}`}>
+                        <a href={`uslugi/${item.slug}`}>
                             {item.title.rendered}
                             </a> 
                     </li>)}   

@@ -6,7 +6,7 @@ type CityInfo = {
 };
 
 
-const defaultCity = 'moscow';
+// const defaultCity = 'moscow';
 
 const cities: Record<string, CityInfo> = {
   moscow: {

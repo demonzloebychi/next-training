@@ -6,7 +6,7 @@ import LoadMoreButton from '@/components/loadMoreButton/loadMoreButton';
 //для поиска и фильтра на клиенте
 // import SearchFilter from '@/components/search-filter/SearchFilter';
 import ServerSearchFilter from '@/components/server-search-filter/ServerSearchFilter';
-
+import cities from '@/utils/cities';
 // import { CityContext } from '@/app/contexts/cityContext';
 // import { useContext } from 'react';
 
@@ -19,7 +19,7 @@ export const metadata: object = {
     }
 }
 
-const fetchData = async (pageNumber: number) => {
+const fetchData = async (pageNumber: number, city: string) => {
     const response = await fetch(`https://vethome24.ru/wp-json/wp/v2/blog/?per_page=18&page=${pageNumber}`, {
         cache: 'force-cache',
     })
@@ -36,11 +36,19 @@ const fetchData = async (pageNumber: number) => {
 //     url: string;
 //   }
 
+export async function generateStaticParams() {
+    return Object.keys(cities).map((city) => ({ city }));
+  }
 
 
+export default async function Uslugi({
+    params,
+  }: {
+    params: Promise<{ city: string }>;
+  }) {
 
-export default async function Uslugi({}) {
-    const initialData = await fetchData(1);
+    const { city } = await params; 
+    const initialData = await fetchData(1, city);
 
     
     if (!initialData.length) notFound();
@@ -73,7 +81,7 @@ export default async function Uslugi({}) {
             <ul className='cards'>
                 {initialData.map(item =>
                     <li key={item.id} className='card'>
-                        <a href={`/blog/${item.slug}`}>
+                        <a href={`blog/${item.slug}`}>
                             <Image
                                 className='image'
                                 src={item.yoast_head_json.og_image[0].url}

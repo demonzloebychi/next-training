@@ -13,7 +13,7 @@ const CityContext = createContext<CityContextProps | null>(null);
 
 const CityProvider = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
-  const [currentCity, setCurrentCity] = useState('moscow'); // defaultCity = 'moscow'
+  const [currentCity, setCurrentCity] = useState(''); // defaultCity = 'moscow'
 
   useEffect(() => {
     if (pathname) {
