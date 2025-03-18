@@ -15,7 +15,7 @@ export default function CitySelector() {
 
   return (
     <select onChange={handleCityChange}>
-      <option value="">Выберите город</option>
+      <option value="">Город</option>
       {Object.entries(cities).map(([key, city]) => (
         <option key={key} value={key}>
           {city.nominative}

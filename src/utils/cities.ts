@@ -15,12 +15,12 @@ const cities: Record<string, CityInfo> = {
     dative: 'Москве',
     phoneNumber: '+7 (495) 123-45-67',
   },
-  // spb: {
-  //   nominative: 'Санкт-Петербург',
-  //   genitive: 'Санкт-Петербурга',
-  //   dative: 'Санкт-Петербургу',
-  //   phoneNumber: '+7 (812) 123-45-67',
-  // },
+  spb: {
+    nominative: 'Санкт-Петербург',
+    genitive: 'Санкт-Петербурга',
+    dative: 'Санкт-Петербургу',
+    phoneNumber: '+7 (812) 123-45-67',
+  },
 };
 
 export default cities;

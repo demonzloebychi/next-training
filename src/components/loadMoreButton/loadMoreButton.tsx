@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import Image from 'next/image';
-import { GetBlogsResponse } from "@/app/blog/blog.interface";
-import styles from '@/app/products/Products.module.css';
+import { GetBlogsResponse } from "@/app/[city]/blog/blog.interface";
+import styles from '@/app/[city]/products/Products.module.css';
 import { fetchData } from '@/app/api/api'
 import { Button } from "../Button";
 
