@@ -1,7 +1,7 @@
 import {notFound, redirect} from 'next/navigation'
 import Layout from '@/components/layout/Layout'
 import { GetServicesResponse } from './uslugi.interface'
-
+import cities from '@/utils/cities'
 export const metadata: object = {
     title: 'Услуги',
     description: 'Наши услуги!',
@@ -122,6 +122,11 @@ const fetchData = async () => {
     // console.log(data)
     return data as GetServicesResponse;
 }
+
+
+export async function generateStaticParams() {
+    return Object.keys(cities).map((city) => ({ city }));
+  }
 
 
 
