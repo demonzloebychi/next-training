@@ -1,5 +1,4 @@
 import { notFound, redirect } from 'next/navigation';
-import styles from '@/app/products/Products.module.css';
 import Layout from '@/components/layout/Layout';
 import { GetBlogsResponse } from './blog.interface';
 import Image from 'next/image';
@@ -8,6 +7,8 @@ import LoadMoreButton from '@/components/loadMoreButton/loadMoreButton';
 // import SearchFilter from '@/components/search-filter/SearchFilter';
 import ServerSearchFilter from '@/components/server-search-filter/ServerSearchFilter';
 
+// import { CityContext } from '@/app/contexts/cityContext';
+// import { useContext } from 'react';
 
 export const metadata: object = {
     title: 'Блог',
@@ -34,14 +35,21 @@ const fetchData = async (pageNumber: number) => {
 //     text: string;
 //     url: string;
 //   }
-export default async function Uslugi() {
+
+
+
+
+export default async function Uslugi({}) {
     const initialData = await fetchData(1);
 
     
     if (!initialData.length) notFound();
 
 
+    // const city = useContext(CityContext);
 
+    // console.log(city)
+ 
 
 //для поиска и фильтра на клиенте
     // const paragraphData: BlogPostWithUrl[] = initialData.map(item => ({
@@ -62,9 +70,9 @@ export default async function Uslugi() {
        
             <ServerSearchFilter />
 
-            <ul className={styles.cards}>
+            <ul className='cards'>
                 {initialData.map(item =>
-                    <li key={item.id} className={styles.card}>
+                    <li key={item.id} className='card'>
                         <a href={`/blog/${item.slug}`}>
                             <Image
                                 className='image'

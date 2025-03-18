@@ -1,5 +1,4 @@
 import {notFound, redirect} from 'next/navigation'
-import styles from '@/app/products/Products.module.css'
 import Layout from '@/components/layout/Layout'
 import { GetServicesResponse } from './uslugi.interface'
 
@@ -133,14 +132,17 @@ export default async function Uslugi() {
 
     if(!data) notFound()
 
+
+    const currentUrl = 'uslugi'
+
     return(
         <Layout>
-            <h1 className={styles.title}>Услуги</h1>
+            <h1 className='title'>Услуги</h1>
 
             <ul className='cards'>
                 {topLevelServices.map( item => 
                     <li key={item.id} className='card'>
-                        <a href={`/uslugi/${item.slug}`}>
+                        <a href={`/${currentUrl}/${item.slug}`}>
                             {item.title.rendered}
                             </a> 
                     </li>)}   

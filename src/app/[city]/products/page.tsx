@@ -6,7 +6,6 @@ import { GetProductsResponse } from './products.interface'
 import Layout from '@/components/layout/Layout'
 import CategoryFilters from '@/components/category-filter/CategoryFilter';
 import { Suspense } from 'react'; // Импортируем Suspense
-import { ModeToggle } from '@/components/ToggleTheme/ToggleTheme';
 
 // import axios from 'axios';
 // import { useQuery } from '@tanstack/react-query'

@@ -122,8 +122,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
     const serviceChildren = await fetchChildren(service.id);
 
-
-
     function parseHtmlRegex(htmlString: string): { title: string; text: string }[] {
         const regexTitle = /<div class="spoiler__title">(.*?)<\/div>/g;
         const regexText = /<div class="spoiler__text">(.*?)<\/div>/g;
@@ -194,18 +192,16 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     </div>
                 </div>
 
-                <div className="ss-banner__right">
-                        {
-                            service.acf.o_vrache && (
-                                <div dangerouslySetInnerHTML={{ __html: service.acf.o_vrache }} />
-                            )
-                        }
-                    
+                {
+                    service.acf.o_vrache && (
+                        <div className="ss-banner__right">
+                            <div dangerouslySetInnerHTML={{ __html: service.acf.o_vrache }} />
+                        </div>
+                    )
+                        
+                }
 
-                    
-
-
-                </div>
+                
 
              </div>
 

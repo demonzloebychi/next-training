@@ -1,4 +1,4 @@
-import { GetBlogsResponse } from "@/app/blog/blog.interface"
+import { GetBlogsResponse } from "@/app/[city]/blog/blog.interface"
 
 export const fetchData = async (pageNumber: number) => {
     const response = await fetch(`https://vethome24.ru/wp-json/wp/v2/blog/?per_page=18&page=${pageNumber}`, {
