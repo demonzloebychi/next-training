@@ -108,7 +108,7 @@ const Header = () => {
                         )}
                     </ul>
 
-
+                    
                     
                 </nav>
 
@@ -122,8 +122,8 @@ const Header = () => {
                     Отправить заявку
                 </Button>
 
+                
                 <ModeToggle/>
-              
 
                 <CitySelector />
                 

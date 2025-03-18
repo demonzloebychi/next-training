@@ -179,10 +179,21 @@ h1,
   display: none;
 }
 
+@media (max-width:500px){
+  .header{
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 20px;
+  }
+
+  .main{
+    margin-top: 130px;
+  }
+}
+
 @media (max-width:768px) {
 
   .header{
-
     left: 0;
     transform: none;
   }
@@ -537,7 +548,7 @@ h1,
 
 .toggle-button {
   position: relative;
-  z-index: 1000;
+  z-index: 3;
 }
 .actions-menu {
   transition: all .3s ease-in-out;
@@ -551,13 +562,14 @@ h1,
   border-radius: 10px;
   right: 0px;
   z-index: 5;
+  background: var(--background);
+
   button{
     padding: 5px;
   }
 }
 .actions-menu.active{
   transition: all .3s ease-in-out;
-
   opacity: 1;
   top: 35px;
 }
