@@ -212,7 +212,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 <ul className='cards'>
                     {serviceChildren.map( item => 
                         <li key={item.id} className='card'>
-                            <a href={`/uslugi/${item.slug}`}>
+                            <a href={`${item.slug}`}>
                                 {item.title.rendered}
                                 </a> 
                         </li>)}   

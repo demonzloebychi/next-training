@@ -33,7 +33,7 @@ const LoadMoreButton = ({ initialData }: { initialData: GetBlogsResponse }) => {
             <ul className='cards'>
                 {data.slice(initialData.length).map(item =>
                     <li key={item.id} className={styles.card}>
-                        <a href={`/blog/${item.slug}`}>
+                        <a href={`blog/${item.slug}`}>
                             <Image
                                 className='image'
                                 src={item.yoast_head_json.og_image[0].url}
