@@ -26,6 +26,19 @@ export const metadata: object = {
 // }
 
 
+// const fetchFirstServices = async () => {
+//     const response = await fetch('https://clinical.vet/wp-json/wp/v2/uslugi/?parent=0', {
+//         cache: 'force-cache',
+//         next: {
+//             revalidate: 3600,
+//         }
+//     })
+
+//     const data = await response.json()
+//     // console.log(data)
+//     return data as GetServicesResponse;
+
+// }
 
 
 
@@ -64,9 +77,6 @@ const fetchData = async () => {
     // }
 
     // return allServices;
-
-
-
 
     let allServices: GetServicesResponse = [];
     let page = 1;
@@ -142,6 +152,9 @@ export default async function Uslugi({
 
 
     const data = await fetchData()
+
+        // const data = await fetchFirstServices()
+
 
     const topLevelServices = data.filter(item => item.parent === 0);
 

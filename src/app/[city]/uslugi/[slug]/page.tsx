@@ -79,6 +79,7 @@ const fetchPhotoServiceBySlug = async (photoId: number) => {
     const response = await fetch(`https://clinical.vet/wp-json/wp/v2/media/${photoId}`)
 
         const data = await response.json();
+
         const photoUrl = data.source_url; // Это URL фотографии
         // console.log(photoUrl);
 
@@ -106,7 +107,6 @@ const fetchChildren = async(id: number) => {
 
     return dataChildren as GetServicesResponse;
 }
-
 
 
 
@@ -206,13 +206,14 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
              </div>
 
                 
-
+ 
 
                 
                 <ul className='cards'>
                     {serviceChildren.map( item => 
                         <li key={item.id} className='card'>
-                            <a href={`${item.slug}`}>
+                            <a href={`${service.slug}/${item.slug}`}>
+
                                 {item.title.rendered}
                                 </a> 
                         </li>)}   
@@ -275,14 +276,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
               
 
-               
-
-                
-
-
-            <div className={styles.content}>
-
-            </div>
+        
         </Layout>
     );
 }
