@@ -216,7 +216,7 @@ export default async function UslugiCatchAllPage({ params }: { params: Promise<{
 
 
 
-              <a className='buttonBack' href="/uslugi">Назад</a>
+              <a className='buttonBack' href="./">Назад</a>
 
              <div className="ss-banner">
 
