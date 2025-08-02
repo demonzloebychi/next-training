@@ -153,9 +153,9 @@ export default async function Uslugi({
 
     const data = await fetchData()
 
-        // const data = await fetchFirstServices()
+    // const data = await fetchFirstServices()
 
-    const topLevelServices = data;
+    // const topLevelServices = data;
 
     // const topLevelServices = data.filter(item => item.parent === 0);
 
@@ -167,7 +167,7 @@ export default async function Uslugi({
             <h1 className='title'>Услуги</h1>
 
             <ul className='cards'>
-                {topLevelServices.map( item => 
+                {data.map( item => 
                     <li key={item.id} className='card'>
                         <a href={`uslugi/${item.slug}`}>
                             {item.title.rendered}
