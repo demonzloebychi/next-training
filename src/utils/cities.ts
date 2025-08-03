@@ -18,7 +18,7 @@ const cities: Record<string, CityInfo> = {
   spb: {
     nominative: 'Санкт-Петербург',
     genitive: 'Санкт-Петербурга',
-    dative: 'Санкт-Петербургу',
+    dative: 'Санкт-Петербурге',
     phoneNumber: '+7 (812) 123-45-67',
   },
 };

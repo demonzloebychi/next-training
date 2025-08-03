@@ -2,14 +2,29 @@ import {notFound, redirect} from 'next/navigation'
 import Layout from '@/components/layout/Layout'
 import { GetServicesResponse } from './uslugi.interface'
 import cities from '@/utils/cities'
-export const metadata: object = {
-    title: 'Услуги',
-    description: 'Наши услуги!',
-    openGraph: {
-        title: 'Products',
-        description: 'call',
+
+type Params = { city: string };
+
+
+// export const metadata: object = {
+//     title: 'Услуги',
+//     description: 'Наши услуги!',
+//     openGraph: {
+//         title: 'Products',
+//         description: 'call',
+//     }
+// }
+export async function generateMetadata({params}: {params: Promise<Params>}) {
+    const resolvedParams = await params;
+    const city = cities[resolvedParams.city] || cities.moscow;
+    return {
+        title: `Услуги в ${city.nominative}`,
+        description: `Наши услуги в ${city.dative}!`,
     }
 }
+
+
+
 
 
 
@@ -142,12 +157,17 @@ export async function generateStaticParams() {
 
 export default async function Uslugi({
     params,
-}: {params: Promise<{ city: string }>;
+}: 
+// {params: Promise<{ city: string }>}
+{params: Promise<Params> }
 
-}) {
 
+) {
+    const resolvedParams = await params;
 
-    const { city } = await params; 
+    const city = cities[resolvedParams.city] || cities.moscow;
+
+    // const { city } = await params; 
 
 
 
@@ -164,7 +184,7 @@ export default async function Uslugi({
 
     return(
         <Layout>
-            <h1 className='title'>Услуги</h1>
+            <h1 className='title'>Услуги в {city.dative}</h1>
 
             <ul className='cards'>
                 {data.map( item => 
